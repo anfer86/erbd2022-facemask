@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from torch.optim import optimizer
 import torch
 
-from ifsc-face-mask.utils import initialize_model
+from ifsc_facemask.utils import initialize_model
 
 class FaceMaskModel(pl.LightningModule):
 
