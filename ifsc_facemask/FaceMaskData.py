@@ -4,7 +4,7 @@ from torch.utils.data import random_split, DataLoader
 
 class FaceMaskData(pl.LightningDataModule):
     
-    def __init__(self, batch_size=32, data_url = None, data_dir: str = 'data', input_size=None):
+    def __init__(self, batch_size=32, data_url = None, data_dir: str = 'data', input_size=None, train_size=0.8, val_size=0.1, test_size=0.1):
         super().__init__()
         self.data_dir = data_dir
         self.batch_size = batch_size
@@ -30,13 +30,13 @@ class FaceMaskData(pl.LightningDataModule):
     def prepare_data(self):
         pass
 
-    def setup(self, train_size=0.8, val_size=0.1, test_size=0.1):
+    def setup(self, stage="train"):
         # build dataset
         data = datasets.ImageFolder(self.data_dir)
         self.num_classes = len(data.classes)
         # split dataset
-        train_size_ = int(len(data) * train_size)
-        val_size_   = int(len(data) * val_size)
+        train_size_ = int(len(data) * self.train_size)
+        val_size_   = int(len(data) * self.val_size)
         test_size_  = len(data) - train_size_ - val_size_
         self.train, self.val, self.test = random_split(data, [train_size_, val_size_, test_size_])                
         self.train.dataset.transform = self.augmentation
