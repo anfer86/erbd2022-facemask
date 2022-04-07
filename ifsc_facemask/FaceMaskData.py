@@ -36,7 +36,7 @@ class FaceMaskData(pl.LightningDataModule):
         self.num_classes = len(data.classes)
         # split dataset
         train_size_ = int(len(data) * train_size)
-        val_size_   = int(len(data) * test_size)
+        val_size_   = int(len(data) * val_size)
         test_size_  = len(data) - train_size_ - val_size_
         self.train, self.val, self.test = random_split(data, [train_size_, val_size_, test_size_])                
         self.train.dataset.transform = self.augmentation
