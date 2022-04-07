@@ -10,6 +10,9 @@ class FaceMaskData(pl.LightningDataModule):
         self.batch_size = batch_size
         self.data_url = data_url
         self.input_size = input_size
+        self.train_size = train_size
+        self.val_size = val_size
+        self.test_size = test_size
 
         # Augmentation policy for training set
         self.augmentation = transforms.Compose([
