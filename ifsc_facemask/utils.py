@@ -5,6 +5,7 @@ random.RandomState(1)
 
 # Imports pytroch
 from torchvision import models
+from torch import nn
 
 def set_parameter_requires_grad(model, feature_extracting):
     if feature_extracting:
