@@ -1,10 +1,10 @@
-from FaceMaskModelModule import FaceMaskModel
+from FaceMaskModel import FaceMaskModel
 
 model_name = "squeezenet"
 faceMaskModel = FaceMaskModel.load_from_checkpoint('logs/{}/version_0/checkpoints/epoch=2-step=39.ckpt'.format(model_name))
 print(faceMaskModel)
 
-from FaceMaskDataModule import FaceMaskDataModule
+from FaceMaskData import FaceMaskDataModule
 faceMaskData = FaceMaskDataModule(input_size=faceMaskModel.input_size)
 faceMaskData.setup()
 

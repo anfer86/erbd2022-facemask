@@ -17,8 +17,9 @@ class FaceMaskData(pl.LightningDataModule):
         # Augmentation policy for training set
         self.augmentation = transforms.Compose([
               transforms.RandomResizedCrop(size=self.input_size),
-              transforms.RandomRotation(degrees=15),
-              transforms.RandomHorizontalFlip(),              
+              transforms.RandomRotation(degrees=90),
+              transforms.RandomHorizontalFlip(),
+              transforms.RandomVerticalFlip(),
               transforms.ToTensor(),
               #transforms.Normalize([0.485, 0.456, 0.406],[0.229, 0.224, 0.225])
         ])
