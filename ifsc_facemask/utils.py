@@ -66,14 +66,14 @@ def initialize_model(model_name, num_classes, feature_extract, use_pretrained=Tr
     elif model_name =="mobilenet_v3_small":
         model_ft = models.mobilenet_v3_small(pretrained=use_pretrained)
         set_parameter_requires_grad(model_ft, feature_extract)
-        num_ftrs = model_ft.classifier[1].in_features
+        num_ftrs = model_ft.classifier[3].in_features
         model_ft.classifier[3] = nn.Linear(num_ftrs,num_classes)
         input_size = 224
 
     elif model_name =="mobilenet_v3_large":
         model_ft = models.mobilenet_v3_large(pretrained=use_pretrained)
         set_parameter_requires_grad(model_ft, feature_extract)
-        num_ftrs = model_ft.classifier[1].in_features
+        num_ftrs = model_ft.classifier[3].in_features
         model_ft.classifier[3] = nn.Linear(num_ftrs,num_classes)
         input_size = 224        
 
